@@ -16,7 +16,7 @@ export default function Content() {
        
        
            <Route path='/register' element={<Register/>}></Route>
-           
+           <Route path='/login' element={<Login/>}></Route>
 
          
            
