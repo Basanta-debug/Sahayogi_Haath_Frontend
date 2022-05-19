@@ -71,8 +71,7 @@ export const Adminprofile = () => {
                         <Link to="/addworker" className="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i className="fas fa-map-marker-alt me-2" />Add Worker</Link>
                     </div>
                 </div>
-                {/* /#sidebar-wrapper */}
-                {/* Page Content */}
+                
                 <div id="page-content-wrapper">
                     <nav className="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                         <div className="d-flex align-items-center">
@@ -150,7 +149,7 @@ export const Adminprofile = () => {
                                             <th scope="col">Date of Birth</th>
                                             <th scope="col">Photo</th>
                                             <th scope="col">Verification</th>
-                                            {/* <th scope="col">problemdescription</th> */}
+                                           
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -182,7 +181,7 @@ export const Adminprofile = () => {
                     </div>
                 </div>
             </div>
-            {/* /#page-content-wrapper */}
+         
             <div className="modal fade" id="exampleModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
