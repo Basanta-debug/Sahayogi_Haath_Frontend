@@ -40,10 +40,7 @@ export const Dashboard = () => {
         })
     }
     console.log(data);
-    // useEffect(() => {
-    //     showData()
-    // }, [])
-    // invoice post
+  
     const [problemdescription, setproblemdescription] = useState('')
     const [totalcost, settotalcost] = useState('')
     // delete
@@ -192,7 +189,7 @@ export const Dashboard = () => {
                                                         <button onClick={deletebooking.bind(this, data._id)} type='button' className='btn my-1 mx-1 btn-outline-danger btn-sm'><FaTrashAlt/></button>
                                                         </>
                                                         </>
-                                                        {/* <td>{data.problemdescription}</td> */}
+                                                       
                                                     </tr>
                                                 )
                                             })
@@ -204,7 +201,7 @@ export const Dashboard = () => {
                     </div>
                 </div>
             </div>
-            {/* /#page-content-wrapper */}
+           
             <div className="modal fade" id="exampleModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
