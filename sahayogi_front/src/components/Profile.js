@@ -4,7 +4,7 @@ import axios from 'axios';
 import './home.css'
 import { useParams,useNavigate } from 'react-router-dom';
 import {Toaster, toast} from 'react-hot-toast'
-//import './profile.css'
+
 export default function Profile() {
     let navigate = useNavigate();
     const uid = localStorage.getItem('pid')
@@ -50,14 +50,12 @@ export default function Profile() {
     const [gender, setgender] = useState('');
     const [photo, setphoto] = useState('');
     const [messages, setMessage] = useState('');
-    //const [profilephoto, setProfilephoto]=useState('');
+    
 
     const addProfile = (e) => {
         e.preventDefault();
 
-        // const adata = {
-        //     fullname, email, address, phone, gender, date, problem
-        // }
+       
         const adata = new FormData();
         adata.append('fullname', fullname);
         adata.append('address', address);
@@ -92,10 +90,11 @@ export default function Profile() {
             <div className="container-xxl bg-white p-0">
 
             
-                {/* Navbar & Hero Start */}
+              
                 <div className="container-xxl position-relative p-0">
                     <Navbar></Navbar>
                     <Toaster/>
+                    
                     <div className="container rounded bg-white mt-5 mb-5">
                         <div className="row">
                             <div className="col-md-3 border-right">
@@ -107,7 +106,7 @@ export default function Profile() {
                                
                             </div>
                             
-                          
+                           
                             <div className="col-md-5 border-right">
                                 <div className="inputsec">
                                     <div className="d-flex justify-content-between align-items-center mb-3">
@@ -170,19 +169,22 @@ export default function Profile() {
 
 
                                     <div className="col-md-6"><label className="labels">Profile Image</label><input type="file"
-                                    id='id'
+                                  
                                         onChange={(e) => setphoto(e.target.files[0])} /></div>
 
-                                    <div className="mt-5 text-center"><button className="btn btn-primary profile-button" type="submit" id='addprofile'
+                                    <div className="mt-5 text-center"><button className="btn btn-primary profile-button" type="submit" id='profile'
                                         onClick={addProfile}
 
                                     >Save Profile</button></div>
                                 </div>
                             </div>
-
+                        
                         </div>
+                        
                     </div>
+                   
                 </div>
+                
             </div>
             {/* <!-- Footer Start --> */}
             <div class="container-fluid bg-dark text-light footer pt-5 wow fadeIn" data-wow-delay="0.1s" >
@@ -249,7 +251,7 @@ export default function Profile() {
                     </div>
                 </div>
             </div>
-            {/* <!-- Footer End --> */}
+          
 
 
         </div>
