@@ -4,8 +4,7 @@ import { useEffect, useState } from "react";
 import "../dashboard.css";
 import { Link } from "react-router-dom";
 import sahayogi from "../../images/logo.jpg";
-import { TiTickOutline } from "react-icons/ti";
-import { ImCross } from "react-icons/im";
+
 export const Addcook = () => {
   const logout = () => {
     localStorage.clear();
@@ -346,7 +345,6 @@ console.log(adata);
           </div>
         </div>
       </div>
-      {/* /#page-content-wrapper */}
     </>
   );
 };
