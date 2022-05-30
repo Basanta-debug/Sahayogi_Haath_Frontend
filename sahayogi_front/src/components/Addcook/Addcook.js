@@ -28,6 +28,8 @@ export const Addcook = () => {
   const [experience, setexperience] = useState("");
   const [workinglocation, setworkinglocation] = useState("");
 
+
+  //approval of the workers by admin
   const ApproveBooking = (id) => {
     const data = { id: id };
     axios
@@ -70,6 +72,8 @@ console.log(adata);
       .catch();
   };
 
+
+//cook detailsss
   useEffect(() => {
     axios
       .get("http://localhost:180/cook/details")
@@ -86,7 +90,7 @@ console.log(adata);
   return (
     <>
       <div className="d-flex" id="wrapper">
-        {/* Sidebar */}
+      
         <div className="bg-white" id="sidebar-wrapper">
           <div className="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom">
             {" "}
