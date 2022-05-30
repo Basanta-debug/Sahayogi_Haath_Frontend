@@ -155,7 +155,7 @@ export const Adminprofile = () => {
                                     <tbody>
              
 
-                //mapping for showing the object dynamically
+               
                                     <tr/>
             {viewdata.map(singleData=>{
             console.log(singleData);
