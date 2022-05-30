@@ -209,7 +209,7 @@ export default function Profile() {
                             <a class="btn btn-link" href="">Contact Us</a>
                             <a class="btn btn-link" href="">Privacy Policy</a>
                             <a class="btn btn-link" href="">Terms & Condition</a>
-                            <a class="btn btn-link" href="">Career</a>
+                         
                         </div>
                         <div class="col-md-6 col-lg-3">
                             <h5 class="text-white mb-4">Popular Link</h5>
@@ -217,11 +217,11 @@ export default function Profile() {
                             <a class="btn btn-link" href="">Contact Us</a>
                             <a class="btn btn-link" href="">Privacy Policy</a>
                             <a class="btn btn-link" href="">Terms & Condition</a>
-                            <a class="btn btn-link" href="">Career</a>
+                            
                         </div>
                         <div class="col-md-6 col-lg-3">
                             <h5 class="text-white mb-4">Newsletter</h5>
-                            <p>Lorem ipsum dolor sit amet elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulpu</p>
+                         
                             <div class="position-relative w-100 mt-3">
                                 <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text" placeholder="Your Email" />
                                 <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i class="fa fa-paper-plane text-primary fs-4"></i></button>
