@@ -57,7 +57,7 @@ export const Adminprofile = () => {
     return (
         <>
             <div className="d-flex" id="wrapper">
-                {/* Sidebar */}
+                
                 <div className="bg-white" id="sidebar-wrapper">
                     <div className="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom">   <img src= {sahayogi} alt="#" height={200}/>SAHAYOGI HAATH</div>
                     <div className="list-group list-group-flush my-3">
@@ -153,6 +153,9 @@ export const Adminprofile = () => {
                                         </tr>
                                     </thead>
                                     <tbody>
+             
+
+                //mapping for showing the object dynamically
                                     <tr/>
             {viewdata.map(singleData=>{
             console.log(singleData);
