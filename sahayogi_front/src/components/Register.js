@@ -3,16 +3,42 @@ import './Register.css'
 import Navbar from './navbar'
 import sahayogi from '../images/logo.jpg'
 import googles from '../images/google.jpg'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import {useNavigate, Link} from 'react-router-dom'
 import emailjs from 'emailjs-com'
 import {Toaster, toast} from 'react-hot-toast'
+import {GoogleLogin} from 'react-google-login'
+
+
+const clientId="806401067505-oqa1qchkj98iuj9chd9ghb1tka6c9171.apps.googleusercontent.com"
 
 export default function Register() {
 
 
 
+const responseSuccessGoogle=(response)=>{
+  console.log(response)
+  localStorage.setItem('googletoken', response.tokenId);
+  navigate('/')
+}
+
+const responseErrorGoogle=(response)=>{
+  
+}
+
+
+
+const onSuccess=(res)=>{
+  console.log('LOGIN SUCCESS! Current user:', res.profileObj)
+  
+    
+
+}
+
+const onFailure=(res)=>{
+  console.log('LOGIN FAILED!! res:',res)
+}
 
   
   let navigate = useNavigate();
@@ -26,7 +52,7 @@ export default function Register() {
   
 
   const registerUser = (e) => {
-   
+   e.preventDefault();
     const userData = {
       firstname,
       lastname,
@@ -40,13 +66,24 @@ export default function Register() {
     
 
    }else{
-    axios.post("http://localhost:180/customer/register", userData);
-    toast.success('Registration Success');
-    
-    navigate('/login')
-    .then(result=>{
-      if(result.data.success){
+    axios.post("http://localhost:180/customer/register", userData)
 
+    
+
+    
+    .then(result=>{
+      if(result.data){
+        toast.success('Registration Success');
+        emailjs.sendForm('service_aicg1fz', 'template_150cxet',e.target,'r3j4WyQW1cAwsZsBn')
+        .then(res=>{
+          console.log(res)
+          console.log('asdas')
+         
+        })
+   
+    
+
+        navigate('/login')
       }
       else{
         //not registered
@@ -55,12 +92,14 @@ export default function Register() {
     })
     .catch();
    }
+    
+          
 
-   emailjs.send("service_aicg1fz","template_150cxet",{
-    email: "banjarabasanta123@gmail.com",
-    });
   };
 
+
+
+ 
   return (
     <div>
         <Navbar></Navbar>
@@ -68,7 +107,7 @@ export default function Register() {
         <div class="wrapper " >
 			<div class="inner">
 				<div>
-				<form action="" id="registerForm">
+				<form action="" id="registerForm" onSubmit={registerUser}>
 					<h3>Registration Form</h3>
 					<div class="form-group">
 						<div class="form-wrapper">
@@ -147,9 +186,7 @@ export default function Register() {
                     
                      type="submit"
                      id="signup"
-                     onClick={(e) => {
-                    registerUser(e);
-                  }}
+                     onClick={registerUser}
                   >Register Now</button>
                  
 				</form></div>
@@ -159,11 +196,15 @@ export default function Register() {
 					<img src= {sahayogi} alt="#" height="300"/>
 					
       
-					<div class='classb'  >
+					<div >
 
-						<img src={googles} height="40px" width="40px" class="imagee"/>
-						<h4 class=' classc'>Sign in with google</h4>
-
+          <GoogleLogin
+              clientId="806401067505-oqa1qchkj98iuj9chd9ghb1tka6c9171.apps.googleusercontent.com"
+              buttonText="Login"
+              onSuccess={responseSuccessGoogle}
+              onFailure={responseErrorGoogle}
+              cookiePolicy={'single_host_origin'}
+                />,
 					</div>
 					
 				</div>
