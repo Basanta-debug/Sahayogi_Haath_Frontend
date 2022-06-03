@@ -40,7 +40,24 @@ export default function SingleCook() {
   const userid = token?.cusId
   console.log(userid)
 
-  
+  const addcomment = (e) => {
+    e.preventDefault();
+
+    const adata = {text:text, user:userid , cook:id, rating:rate }
+    
+    
+    
+
+    axios
+      .post("http://localhost:180/comment/add", adata)
+      .then((result12) => {
+        if (result12.data) {
+          alert("Comment Added succsessfullly!!");
+        }
+        
+      })
+      .catch();
+  };
 
 
   
@@ -57,6 +74,18 @@ export default function SingleCook() {
 
   }, []);
 
+  useEffect(() => {
+    axios
+      .get("http://localhost:180/comment/details/" +id)
+      .then((result) => {
+        console.log(result.data);
+        setProdata(result.data);
+      })
+
+      .catch((e) => {
+        console.log("something went wrong");
+      });
+  }, [prodata]);
   const givenRating =3
 
   
@@ -197,20 +226,10 @@ export default function SingleCook() {
 
                   <div>    
                  <h5 className="pl-1 pt-4">{singledata.user.firstname} {singledata.user.lastname}  <div className="float-right flag">
-      {/* {[...Array(5)].map((item, index) => {
-        const givenRating = index + 1;
-        return ( */}
+     
 
           <label>
-            {/* <Radio
-              type="radio"
-              value={givenRating}
-              onClick={() => {
-                setRate(givenRating);
-                alert(`Are you sure you want to give ${givenRating} stars ?`);
-              
-              }}
-            /> */}
+           
 
             
             {
@@ -248,7 +267,7 @@ export default function SingleCook() {
            
           </label>
         
-      {/* })} */}
+   
                  
                  <BsFlag className="ml-4"></BsFlag> </div></h5>
                  
