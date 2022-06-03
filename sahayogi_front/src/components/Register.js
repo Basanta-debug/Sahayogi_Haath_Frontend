@@ -11,11 +11,34 @@ import {Toaster, toast} from 'react-hot-toast'
 import {GoogleLogin} from 'react-google-login'
 
 
+const clientId="806401067505-oqa1qchkj98iuj9chd9ghb1tka6c9171.apps.googleusercontent.com"
 
 export default function Register() {
 
 
 
+const responseSuccessGoogle=(response)=>{
+  console.log(response)
+  localStorage.setItem('googletoken', response.tokenId);
+  navigate('/')
+}
+
+const responseErrorGoogle=(response)=>{
+  
+}
+
+
+
+const onSuccess=(res)=>{
+  console.log('LOGIN SUCCESS! Current user:', res.profileObj)
+  
+    
+
+}
+
+const onFailure=(res)=>{
+  console.log('LOGIN FAILED!! res:',res)
+}
 
   
   let navigate = useNavigate();
@@ -54,14 +77,16 @@ export default function Register() {
         emailjs.sendForm('service_aicg1fz', 'template_150cxet',e.target,'r3j4WyQW1cAwsZsBn')
         .then(res=>{
           console.log(res)
+          console.log('asdas')
          
         })
    
+    
 
         navigate('/login')
       }
       else{
-      
+        //not registered
        
       }
     })
@@ -126,7 +151,6 @@ export default function Register() {
                         />
 					</div>
 
-//this email goes to client
 					<div class="form-wrapper">
 						<label for="">Email</label>
 						<input type="text" class="form-control"
@@ -174,7 +198,13 @@ export default function Register() {
       
 					<div >
 
-         
+          <GoogleLogin
+              clientId="806401067505-oqa1qchkj98iuj9chd9ghb1tka6c9171.apps.googleusercontent.com"
+              buttonText="Login"
+              onSuccess={responseSuccessGoogle}
+              onFailure={responseErrorGoogle}
+              cookiePolicy={'single_host_origin'}
+                />,
 					</div>
 					
 				</div>
