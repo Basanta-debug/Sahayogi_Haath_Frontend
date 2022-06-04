@@ -67,7 +67,7 @@ export default function SingleCook() {
     axios
       .get("http://localhost:180/cook/single/" + id, config)
       .then((result) => {
-        // console.log(result.data)
+       
         setSingledata(result.data);
         console.log('hi')
       });
