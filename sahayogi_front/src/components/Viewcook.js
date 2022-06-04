@@ -29,6 +29,8 @@ export default function ViewCook() {
       });
   }, []);
 
+
+  //search function
 const searchFunction=(e)=>{
   const searchTerm= e.target.value
   console.log(searchTerm)
@@ -71,7 +73,7 @@ const searchFunction=(e)=>{
               </div>
             </div>
 
-            {/* search */}
+            
             <div class="input-group searchs">
               <div class="form-outline">
                 <input type="search"  class="form-control"
