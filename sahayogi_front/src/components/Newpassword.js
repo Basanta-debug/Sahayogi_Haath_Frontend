@@ -17,6 +17,23 @@ export default function Newpassword() {
 
   const [email, setEmail] = useSearchParams();
 
+  const updatePassword = (e) => {
+    e.preventDefault();
+    axios
+      .put("http://localhost:180/updatepassword", {
+        email: email.get("email"),
+        password: password,
+      })
+      .then((result) => {
+        if (result.data) {
+          alert(" Password updated Successfully");
+        } else {
+          alert("Something went wrong");
+        }
+      });
+  };
+
+
   
 
   return (
