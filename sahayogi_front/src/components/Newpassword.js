@@ -15,7 +15,7 @@ import { Toaster, toast } from "react-hot-toast";
 export default function Newpassword() {
   const [password, setPassword] = useState("");
 
-  
+  const [email, setEmail] = useSearchParams();
 
   
 
