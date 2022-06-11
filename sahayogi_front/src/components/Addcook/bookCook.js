@@ -10,6 +10,12 @@ export default function BookCook() {
   const [singledata, setSingledata] = useState([]);
 
   const { id } = useParams();
+  
+  const config = {
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("t"),
+    },
+  };
 
   
 
