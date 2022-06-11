@@ -20,6 +20,23 @@ export default function Changepsw() {
  
 
   const {id}=useParams();
+  
+  const changepassword = (e) => {
+    e.preventDefault();
+    axios
+      .put("http://localhost:180/changepassword/" +id, { password,newpassword,currentpassword
+       
+      })
+      .then((result) => {
+        if (result.data==='passwod chnged sucessfully') {
+          alert(" Password updated Successfully");
+        } else {
+          alert("Something went wrong");
+        }
+      });
+
+  };
+
 
  
 
