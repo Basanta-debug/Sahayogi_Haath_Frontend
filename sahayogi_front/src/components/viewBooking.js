@@ -17,7 +17,7 @@ export const ViewBooking = () => {
     }
 
     const [viewdata, setViewdata] = useState([]);
-
+    const [prodata, setProdata] = useState([]);
  
     useEffect(()=>{
         axios.get("http://localhost:180/booking/details")
@@ -29,6 +29,7 @@ export const ViewBooking = () => {
             console.log("something went wrong")
         })
      }, [])
+
 
      
 
