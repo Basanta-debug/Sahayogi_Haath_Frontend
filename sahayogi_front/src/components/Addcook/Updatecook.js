@@ -12,6 +12,13 @@ export const Updatecook = () => {
     let navigate = useNavigate();
  
    
+    
+
+ const logout = () => {
+  localStorage.clear();
+  window.location.replace("/");
+};
+
     const config = {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("t"),
