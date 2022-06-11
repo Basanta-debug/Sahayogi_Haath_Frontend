@@ -17,7 +17,27 @@ export const Updatecook = () => {
         Authorization: "Bearer " + localStorage.getItem("t"),
       },
     };
+
+    useEffect(()=>{
+      axios.get('http://localhost:180/cook/single/'+ id, config)
+      .then(result=>{
   
+        
+          setfirstname(result.data.firstname)
+          setlastname(result.data.lastname)
+          setphone(result.data.phone)
+          setgender(result.data.gender)
+          setaddress(result.data.address)
+          setage(result.data.age)
+          setimage(result.data.photo)
+          setexperience(result.data.experience)
+          setworkinglocation(result.data.workinglocation)
+        
+  
+      })
+        .catch()
+     
+    },[])  
 
  
 
