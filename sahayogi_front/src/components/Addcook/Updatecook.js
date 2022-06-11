@@ -11,6 +11,13 @@ import { useParams } from "react-router-dom";
 export const Updatecook = () => {
     let navigate = useNavigate();
  
+   
+    const config = {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("t"),
+      },
+    };
+  
 
  
 
