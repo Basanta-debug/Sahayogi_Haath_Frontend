@@ -18,6 +18,8 @@ export default function BookCook() {
   };
 
   
+ 
+  
 
   const [firstname, setFname] = useState("");
   const [email, setEmail] = useState("");
@@ -49,6 +51,24 @@ export default function BookCook() {
 
    
   };
+
+  axios
+ .post("http://localhost:180/book/add", adata)
+ .then((result12) => {
+   console.log(result12.data);
+   if (result12.data) {
+    
+     emailjs.sendForm('service_z8mql18', 'template_0umhdkq', e.target, 'Qr2rkw_7_ueP3QaCg')
+
+     .then((result) => {
+       console.log('2')
+         console.log(result.text);
+         
+
+     });
+   }
+ })
+ .catch();
 
   useEffect(() => {
     axios
