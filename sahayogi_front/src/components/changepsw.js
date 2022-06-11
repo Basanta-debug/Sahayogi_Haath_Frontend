@@ -13,7 +13,7 @@ import {
 } from "react-router-dom";
 import { Toaster, toast } from "react-hot-toast";
 export default function Changepsw() {
-  const [password, setPassword] = useState("");
+ 
  
 
   const {id}=useParams();
