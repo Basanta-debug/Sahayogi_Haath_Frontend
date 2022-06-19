@@ -54,16 +54,14 @@ export default function Register() {
         emailjs.sendForm('service_aicg1fz', 'template_150cxet',e.target,'r3j4WyQW1cAwsZsBn')
         .then(res=>{
           console.log(res)
-          console.log('asdas')
          
         })
    
-    
 
         navigate('/login')
       }
       else{
-        //not registered
+      
        
       }
     })
@@ -128,6 +126,7 @@ export default function Register() {
                         />
 					</div>
 
+//this email goes to client
 					<div class="form-wrapper">
 						<label for="">Email</label>
 						<input type="text" class="form-control"
