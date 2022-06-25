@@ -341,7 +341,9 @@ console.log(adata);
                       
                       
                     </div>
+                    
                     <Link to={"/updatecook/" + singleData._id} ><button type="button" class="btn btn-warning ml-5 mt-2">Update</button></Link>
+                    <Link to='#'  onClick={()=>deleteCook(singleData._id)}><AiFillDelete size={50} className='ml-2'></AiFillDelete></Link>
                   </div>
                 );
               })}
