@@ -26,7 +26,7 @@ export const Contact = () => {
   const contact = (e) => {
     e.preventDefault();
 
-    
+    const adata = {name:name,email:email,subject:subject,message:message}
     
 console.log(adata);
    
