@@ -30,6 +30,17 @@ export const Contact = () => {
     
 console.log(adata);
    
+ axios
+ .post("http://localhost:180/contact/add", adata)
+ .then((result12) => {
+   console.log(result12.data.success);
+   if (result12.data.success) {
+   }
+   alert("Contact Added succsessfullly!!");
+ })
+ .catch();
+};
+
     return (
         <div>
   <Navbar></Navbar>
