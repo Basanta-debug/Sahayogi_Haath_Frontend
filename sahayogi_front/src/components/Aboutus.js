@@ -14,7 +14,7 @@ import Navbar from "./navbar";
 
 function AboutUs() {
     return (
-        
+        //no function cause it is static page
     <div className="container aboutus">
     <Navbar></Navbar>
         <div className="row">
@@ -22,7 +22,8 @@ function AboutUs() {
             <img src= {sahayogi} alt="#" height="300"/>
             </div>
             <div className="col-md-6 col-12 my-auto">
-               
+
+                <h1 className="display-4 text-center my-5">About Us </h1>
                 <p className="lead text-justify text-center">At Maid Service, we put all our efforts to provide Service with better experience.</p>
                 <div className="text-center col-md-6 col-12 mx-auto">
                     <Link to="/contact" className="btn btn-outline-dark btn-block btn-lg my-5">Contact us</Link>
