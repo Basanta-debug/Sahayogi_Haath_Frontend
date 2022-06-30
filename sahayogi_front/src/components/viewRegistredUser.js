@@ -13,6 +13,11 @@ import {AiOutlineUsergroupAdd} from 'react-icons/ai';
 export const ViewUser = () => {
    
 
+ const logout=()=>{
+    localStorage.clear();
+    window.location.replace('/')
+}
+
     const [viewdata, setViewdata] = useState([]);
 
  
