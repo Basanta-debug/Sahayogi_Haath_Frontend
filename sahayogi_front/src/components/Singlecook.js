@@ -151,7 +151,7 @@ export default function SingleCook() {
 //           }
 //           return   result12.data[i]
 //          }
-          alert("Liked succsessfullly!!");
+          alert("Liked succsessfullly!");
         }
       })
       .catch();
