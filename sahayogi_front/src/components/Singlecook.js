@@ -132,6 +132,31 @@ export default function SingleCook() {
       })
       .catch();
   };
+
+  
+  const flag = (id) => {
+    const adata = { flag: userid };
+    console.log(userid);
+
+    axios
+      .put("http://localhost:180/comment/flag/" + id, adata)
+      .then((result12) => {
+        if (result12.data) {
+          alert('Comment Reported Succesfully')
+         
+//          for(let i in result12.data.likes){
+//           if(result12.data[i].like ===   userid){
+// // console.log(result12.data[i].like)
+//             return result12.data
+//           }
+//           return   result12.data[i]
+//          }
+        
+        }
+      })
+      .catch();
+  };
+
   
 
   return (
