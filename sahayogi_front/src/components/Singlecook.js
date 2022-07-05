@@ -118,6 +118,20 @@ export default function SingleCook() {
       })
       .catch();
   };
+
+  const UnLike = (id) => {
+    const adata = { like: userid };
+    console.log(userid);
+    axios
+      .put("http://localhost:180/comment/like/" + id, adata)
+      .then((result12) => {
+        if (result12.data) {
+         
+          alert("Liked succsessfullly!!");
+        }
+      })
+      .catch();
+  };
   
 
   return (
