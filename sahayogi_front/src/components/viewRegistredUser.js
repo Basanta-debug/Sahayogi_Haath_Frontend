@@ -48,7 +48,12 @@ export const ViewUser = () => {
                 else {
                     alert('something is wrong')
                 }
+                
             })
+            .catch(() => {
+                alert('something went wrong')
+             })
+            
            
     //delete
     }
