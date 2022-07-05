@@ -41,7 +41,7 @@ export const ViewUser = () => {
             .then(result => {
                 // console.log(result.data)
                 if (result.data) {
-                    
+                    alert('delete successfully')
                     console.log(result.data)
                    
                 }
