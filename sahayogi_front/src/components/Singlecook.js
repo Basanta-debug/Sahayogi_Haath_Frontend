@@ -88,6 +88,36 @@ export default function SingleCook() {
   }, [prodata]);
   const givenRating =3
 
+  const Like = (id) => {
+    const adata = { like: userid };
+    console.log(userid);
+
+    axios
+      .put("http://localhost:180/comment/like/" + id, adata)
+      .then((result12) => {
+        if (result12.data) {
+          alert('Comment Liked Succesfully')
+          result12.data.like.map(likess =>{
+           
+            // console.log(likess)
+            // if(likess.like === userid){
+            //   return result12.data
+            // }else{
+            //  return likess
+            // }
+          })
+//          for(let i in result12.data.likes){
+//           if(result12.data[i].like ===   userid){
+// // console.log(result12.data[i].like)
+//             return result12.data
+//           }
+//           return   result12.data[i]
+//          }
+          alert("Liked succsessfullly!!");
+        }
+      })
+      .catch();
+  };
   
 
   return (
