@@ -33,6 +33,25 @@ export const ViewUser = () => {
         })
      }, [])
 
+     const deleteCustomer = (id) => {
+    
+
+        axios.delete('http://localhost:180/customer/delete/' + id)
+        
+            .then(result => {
+                // console.log(result.data)
+                if (result.data) {
+                    
+                    console.log(result.data)
+                   
+                }
+                else {
+                    alert('something is wrong')
+                }
+            })
+           
+    //delete
+    }
 
      
     return (
@@ -145,7 +164,7 @@ export const ViewUser = () => {
           <td>{singleData.address}</td>
           <td>{singleData.phone}</td>
           <td>{singleData.email}</td>
-         <td> <button type="button" class="btn btn-info">Delete User</button></td>
+          <td>  <Link to='#'  onClick={()=>deleteCustomer(singleData._id)}><AiFillDelete size={50} className='ml-2'></AiFillDelete></Link></td>
           <div className='d-flex'>
            
 
