@@ -22,7 +22,7 @@ export default function Profile() {
         const base64 = base64Url.replace('-', '+').replace('_', '/');
         return JSON.parse(window.atob(base64));
       }
-      // get user form the token
+     
       const token_data = localStorage.getItem("t")
       const token = parseJwt(token_data)
       const userid = token?.cusId
@@ -41,7 +41,7 @@ export default function Profile() {
         })
       },[])
 
-
+//variables for storing the value of the empty use state
     const [fullname, setFullname] = useState("");
 
     const [address, setAddress] = useState("");
@@ -65,7 +65,7 @@ export default function Profile() {
         adata.append('profile_image', photo);
 
         
-
+//backend ko axios
         axios.put("http://localhost:180/profile/insert/"+ userid, adata,config)
             .then(result12 => {
                 console.log(result12.data.success)
