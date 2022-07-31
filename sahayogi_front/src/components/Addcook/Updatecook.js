@@ -10,43 +10,7 @@ import { useParams } from "react-router-dom";
 
 export const Updatecook = () => {
     let navigate = useNavigate();
- 
-   
-    
 
- const logout = () => {
-  localStorage.clear();
-  window.location.replace("/");
-};
-
-    const config = {
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("t"),
-      },
-    };
-
-    useEffect(()=>{
-      axios.get('http://localhost:180/cook/single/'+ id, config)
-      .then(result=>{
-  
-        
-          setfirstname(result.data.firstname)
-          setlastname(result.data.lastname)
-          setphone(result.data.phone)
-          setgender(result.data.gender)
-          setaddress(result.data.address)
-          setage(result.data.age)
-          setimage(result.data.photo)
-          setexperience(result.data.experience)
-          setworkinglocation(result.data.workinglocation)
-        
-  
-      })
-        .catch()
-     
-    },[])  
-
- 
 
   const {id}= useParams();
 
@@ -87,7 +51,7 @@ export const Updatecook = () => {
   }
   
 
- 
+
 
   return (
     <>

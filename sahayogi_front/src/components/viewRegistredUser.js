@@ -13,50 +13,12 @@ import {AiOutlineUsergroupAdd} from 'react-icons/ai';
 export const ViewUser = () => {
    
 
- const logout=()=>{
-    localStorage.clear();
-    window.location.replace('/')
-}
 
     const [viewdata, setViewdata] = useState([]);
 
  
 
-    useEffect(()=>{
-        axios.get("http://localhost:180/customer/details")
-        .then(result=>{
-            console.log(result.data)
-            setViewdata(result.data);
-        })
-        .catch(e=>{
-            console.log("something went wrong")
-        })
-     }, [])
 
-     const deleteCustomer = (id) => {
-    
-
-        axios.delete('http://localhost:180/customer/delete/' + id)
-        
-            .then(result => {
-                // console.log(result.data)
-                if (result.data) {
-                    alert('delete successfully')
-                    console.log(result.data)
-                   
-                }
-                else {
-                    alert('something is wrong')
-                }
-                
-            })
-            .catch(() => {
-                alert('something went wrong')
-             })
-            
-           
-    //delete
-    }
 
      
     return (
@@ -169,7 +131,7 @@ export const ViewUser = () => {
           <td>{singleData.address}</td>
           <td>{singleData.phone}</td>
           <td>{singleData.email}</td>
-          <td>  <Link to='#'  onClick={()=>deleteCustomer(singleData._id)}><AiFillDelete size={50} className='ml-2'></AiFillDelete></Link></td>
+
           <div className='d-flex'>
            
 

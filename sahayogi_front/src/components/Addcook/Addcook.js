@@ -29,7 +29,6 @@ export const Addcook = () => {
   const [workinglocation, setworkinglocation] = useState("");
 
 
-  //approval of the workers by admin
   const ApproveBooking = (id) => {
     const data = { id: id };
     axios
@@ -73,7 +72,6 @@ console.log(adata);
   };
 
 
-//cook detailsss
   useEffect(() => {
     axios
       .get("http://localhost:180/cook/details")
@@ -90,7 +88,6 @@ console.log(adata);
   return (
     <>
       <div className="d-flex" id="wrapper">
-      
         <div className="bg-white" id="sidebar-wrapper">
           <div className="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom">
             {" "}
@@ -341,9 +338,7 @@ console.log(adata);
                       
                       
                     </div>
-                    
-                    <Link to={"/updatecook/" + singleData._id} ><button type="button" class="btn btn-warning ml-5 mt-2">Update</button></Link>
-                    <Link to='#'  onClick={()=>deleteCook(singleData._id)}><AiFillDelete size={50} className='ml-2'></AiFillDelete></Link>
+
                   </div>
                 );
               })}
@@ -351,6 +346,7 @@ console.log(adata);
           </div>
         </div>
       </div>
+
     </>
   );
 };

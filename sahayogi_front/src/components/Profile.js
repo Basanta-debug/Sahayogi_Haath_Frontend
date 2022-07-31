@@ -50,12 +50,12 @@ export default function Profile() {
     const [gender, setgender] = useState('');
     const [photo, setphoto] = useState('');
     const [messages, setMessage] = useState('');
-    
+
 
     const addProfile = (e) => {
         e.preventDefault();
 
-       
+
         const adata = new FormData();
         adata.append('fullname', fullname);
         adata.append('address', address);
@@ -90,7 +90,7 @@ export default function Profile() {
             <div className="container-xxl bg-white p-0">
 
             
-              
+
                 <div className="container-xxl position-relative p-0">
                     <Navbar></Navbar>
                     <Toaster/>
@@ -209,7 +209,7 @@ export default function Profile() {
                             <a class="btn btn-link" href="">Contact Us</a>
                             <a class="btn btn-link" href="">Privacy Policy</a>
                             <a class="btn btn-link" href="">Terms & Condition</a>
-                         
+
                         </div>
                         <div class="col-md-6 col-lg-3">
                             <h5 class="text-white mb-4">Popular Link</h5>
@@ -217,11 +217,7 @@ export default function Profile() {
                             <a class="btn btn-link" href="">Contact Us</a>
                             <a class="btn btn-link" href="">Privacy Policy</a>
                             <a class="btn btn-link" href="">Terms & Condition</a>
-                            
-                        </div>
-                        <div class="col-md-6 col-lg-3">
-                            <h5 class="text-white mb-4">Newsletter</h5>
-                         
+
                             <div class="position-relative w-100 mt-3">
                                 <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text" placeholder="Your Email" />
                                 <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i class="fa fa-paper-plane text-primary fs-4"></i></button>
@@ -251,7 +247,7 @@ export default function Profile() {
                     </div>
                 </div>
             </div>
-          
+
 
 
         </div>
