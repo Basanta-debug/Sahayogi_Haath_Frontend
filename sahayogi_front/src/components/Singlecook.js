@@ -42,12 +42,12 @@ export default function SingleCook() {
 
   const addcomment = (e) => {
     e.preventDefault();
-
+//rating has been sent to the body
     const adata = {text:text, user:userid , cook:id, rating:rate }
     
     
     
-
+///to addd comment
     axios
       .post("http://localhost:180/comment/add", adata)
       .then((result12) => {
