@@ -8,80 +8,52 @@ import { BsPencilSquare } from 'react-icons/bs';
 import { FaTrashAlt } from 'react-icons/fa';
 import {FaPeopleCarry} from 'react-icons/fa';
 import {FaUserCheck} from 'react-icons/fa';
-import {ImProfile} from 'react-icons/im';
+import {ImProfile, ImCross} from 'react-icons/im';
 import {AiOutlineUsergroupAdd} from 'react-icons/ai';
-export const Dashboard = () => {
-
+export const ViewBooking = () => {
     const logout=()=>{
         localStorage.clear();
         window.location.replace('/')
     }
-    const [message, setMessage] = useState('');
-    const [booking, setBooking] = useState([])
-    function showBooking() {
-        const booking = axios.get('http://localhost:90/show/bookings').then(data => {
-            setBooking(data.data)
-        })
-    }
-    useEffect(() => {
-        showBooking()
-    })
-    // 
-    const [vehiclename, setvehiclename] = useState('')
-    const [username, setusername] = useState('')
-    const [vehiclenumber, setvehiclenumber] = useState('')
-    const [data, setData] = useState({})
-    const showData = (id) => {
-        axios.get(`http://localhost:90/booking/show/${id}`).then(data => {
-            setData(data.data)
-            setvehiclename(data.data.vehiclename)
-            setvehiclenumber(data.data.vehiclenumber)
-            setusername(data.data.username)
-        })
-    }
-    console.log(data);
 
-    const [problemdescription, setproblemdescription] = useState('')
-    const [totalcost, settotalcost] = useState('')
-    // delete
-    const invoice = (e) => {
-        e.preventDefault()
-        axios.post('http://localhost:90/invoice/insert', {
-            problemdescription,
-            totalcost,
-            username,
-            vehiclename,
-            vehiclenumber
-        }).then(res=>{
-            console.log(res);
+    const [viewdata, setViewdata] = useState([]);
+   
+    
+ 
+    useEffect(()=>{
+        axios.get("http://localhost:180/booking/details")
+        .then(result=>{
+            console.log(result.data)
+            setViewdata(result.data);
         })
-    }
-    // 
-    const deletebooking = (bookingid) => {
-        axios.delete(`http://localhost:90/delete/bookings/${bookingid}`, {    
-        }).then(res=>{
-            console.log(res.data);
+        .catch(e=>{
+            console.log("something went wrong")
         })
-    }
+     }, [])
+
+
+     
+
+
+   
+     
     return (
         <>
             <div className="d-flex" id="wrapper">
                 {/* Sidebar */}
                 <div className="bg-white" id="sidebar-wrapper">
-                    
-                    <div className="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"> 	<img src= {sahayogi} alt="#" height={200}/>SAHAYOGI HAATH</div>
+                    <div className="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom">   <img src= {sahayogi} alt="#" height={200}/>SAHAYOGI HAATH</div>
                     <div className="list-group list-group-flush my-3">
                         <Link to="/dashboard" className="list-group-item list-group-item-action bg-transparent second-text active"><i className="fas fa-tachometer-alt me-2" />Dashboard</Link>
                         </div>
                         <div className="list-group-item list-group-item-action bg-transparent second-text fw-bold  ">
-
                         <p> Interface</p>
-                        <Link to="/profileadmin" className="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i className="fas fa-gift me-2" />View Profile</Link>
-                        <Link to='/viewuser' className="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i className="fas fa-comment-dots me-2" /> View Registered User</Link>
+                        <Link to="/" className="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i className="fas fa-gift me-2" />View Profile</Link>
+                        <Link to='/invoice' className="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i className="fas fa-comment-dots me-2" /> View Registered User</Link>
                         <Link to="/booking" className="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i className="fas fa-map-marker-alt me-2" />View Worker</Link>
+                        
                         <Link to="/addworker" className="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i className="fas fa-map-marker-alt me-2" />Add Worker</Link>
                         <Link to="/viewbooking" className="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i className="fas fa-map-marker-alt me-2" />View Booking</Link>
-
                     </div>
                 </div>
                 {/* /#sidebar-wrapper */}
@@ -117,9 +89,8 @@ export const Dashboard = () => {
                                         <h3 className="fs-2">8</h3>
                                         <p className="fs-5">Workers</p>
                                     </div>
-                                    <i className="FaPeopleCarry primary-text border rounded-full secondary-bg p-3" 
-                                    
-                                    ><FaPeopleCarry size={40}></FaPeopleCarry></i> 
+                                    <i className="FaPeopleCarry primary-text border rounded-full secondary-bg p-3"
+                                    ><FaPeopleCarry size={40}></FaPeopleCarry></i>
                                 </div>
                             </div>
                             <div className="col-md-3">
@@ -128,7 +99,7 @@ export const Dashboard = () => {
                                         <h3 className="fs-2">4</h3>
                                         <p className="fs-5">Registered User</p>
                                     </div>
-                                    <i className="FaUserCheck primary-text border rounded-full secondary-bg p-3" > 
+                                    <i className="FaUserCheck primary-text border rounded-full secondary-bg p-3" >
                                     <FaUserCheck size={40}></FaUserCheck></i>
                                 </div>
                             </div>
@@ -154,46 +125,38 @@ export const Dashboard = () => {
                             </div>
                         </div>
                         <div className="row my-5">
-                            <h3 className="fs-4 mb-3">Recent Registred Users</h3>
+                            <h3 className="fs-4 mb-3">Recent Booking </h3>
                             <div className="container mx-auto">
                                 <table className="table bg-white rounded shadow-sm  table-hover">
                                     <thead style={{ fontSize: ".9em" }}>
                                         <tr>
-                                            <th scope="col" width={50}>#</th>
-                                            <th scope="col" className=''>Client Name</th>
-                                            <th scope="col">Email</th>
-                                            <th scope="col">Address</th>
-                                            <th scope="col">Phone</th>
+                                            <th scope="col">Customer Name</th>
+                                            <th scope="col">Customer Phone</th>
+                                            <th scope="col">Customer Address</th>
+                                            <th scope="col">Worker's Name</th>
+                                            <th scope="col">Worker's Phone</th>
+                                          
                                             {/* <th scope="col">problemdescription</th> */}
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {
-                                            booking.map((data, ind) => {
-                                                return (
-                                                    <tr className='col-md-12' style={{ fontSize: ".8em" }}>
-                                                        <th scope="row">1</th>
-                                                        <td>{data.username}</td>
-                                                        <td>{data.dateofbooking}</td>
-                                                        <td>{data.address}</td>
-                                                        <td>{data.phone}</td>
-                                                        <td>{data.vehiclename}</td>
-                                                        <td>{data.vehiclebrand}</td>
-                                                        <td>{data.vehiclemodel}</td>
-                                                        <td>{data.vehiclenumber}</td>
-                                                        <td>{data.vehiclecategory} </td>
-                                                        <>
-                                                        <button onClick={showData.bind(this, data._id)} type='button' className='btn btn-outline-success my-1 btn-sm' data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Invoice</button>
-                                                        <>
-                                                        <Link to={`/updatebooking/${data._id}`} type='button' className='btn my-1 mx-1 btn-outline-warning btn-sm'><BsPencilSquare/></Link>
-                                                        <button onClick={deletebooking.bind(this, data._id)} type='button' className='btn my-1 mx-1 btn-outline-danger btn-sm'><FaTrashAlt/></button>
-                                                        </>
-                                                        </>
+                                    <tr/>
+            {viewdata.map(singleData=>{
+            console.log(singleData);
+            return (
+        <tr>
+          <td>{singleData.firstname} {singleData.lastname}</td>
+          <td>{singleData.phone}</td>
+          <td>{singleData.address}</td>
+          <td>{singleData.workersname}</td>
+          <td>{singleData.workersphone}</td>
+          <div className='d-flex'>
+           
 
-                                                    </tr>
-                                                )
-                                            })
-                                        }
+           </div>
+        </tr>
+            )
+        })}
                                     </tbody>
                                 </table>
                             </div>
@@ -201,42 +164,14 @@ export const Dashboard = () => {
                     </div>
                 </div>
             </div>
-
+            {/* /#page-content-wrapper */}
             <div className="modal fade" id="exampleModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
                             <h5 className="modal-title" id="exampleModalLabel">Invoice</h5>
-                             <h4>{message}</h4>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
                         </div>
                         <div className="modal-body">
-                            <form>
-                                <div className="mb-3">
-                                    <label htmlFor="recipient-name" className="col-form-label">Username:</label>
-                                    <input value={username} onChange={e=>setusername(e.target.value)} type="text" className="form-control" id="recipient-name" />
-                                </div>
-                                <div className="mb-3">
-                                    <label htmlFor="recipient-name" className="col-form-label">Vehicle Name:</label>
-                                    <input value={vehiclename} onChange={e=>setvehiclename(e.target.value)} type="text" className="form-control" id="recipient-name" />
-                                </div>
-                                <div className="mb-3">
-                                    <label htmlFor="recipient-name" className="col-form-label">Vehicle Number</label>
-                                    <input value={vehiclenumber} onChange={e=>setvehiclenumber(e.target.value)} type="text" className="form-control" id="recipient-name" />
-                                </div>
-                                <div className="mb-3">
-                                    <label htmlFor="message-text" className="col-form-label">Problemdescription:</label>
-                                    <textarea onChange={(e=>setproblemdescription(e.target.value))} className="form-control" id="message-text" defaultValue={""} />
-                                </div>
-                                <div className="mb-3">
-                                    <label htmlFor="message-text" className="col-form-label">Total Cost:</label>
-                                    <textarea onChange={(e=>settotalcost(e.target.value))} className="form-control" id="message-text" defaultValue={""} />
-                                </div>
-                            </form>
-                        </div>
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button onClick={invoice} type="button" className="btn btn-primary">Invoice </button>
                         </div>
                     </div>
                 </div>
@@ -244,4 +179,4 @@ export const Dashboard = () => {
         </>
     )
 }
-export default Dashboard;
+export default ViewBooking;

@@ -10,21 +10,54 @@ import {FaPeopleCarry} from 'react-icons/fa';
 import {FaUserCheck} from 'react-icons/fa';
 import {ImProfile, ImCross} from 'react-icons/im';
 import {AiOutlineUsergroupAdd} from 'react-icons/ai';
-export const ViewUser = () => {
-   
-
+export const Adminprofile = () => {
+    const logout=()=>{
+        localStorage.clear();
+        window.location.replace('/')
+    }
 
     const [viewdata, setViewdata] = useState([]);
 
- 
+    const config = {
+        headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('t')
+        }
+    }
+
+    const ApproveProfile = (id) => {
+        const data={id:id}
+         axios.put("http://localhost:180/profile/approve/",data ,config)
+             .then(result => {
+                 if (result.data.success) {
+                     
+                     alert('Approval Successful');
+                 }
+                 else {
+                  alert('Something went wrong');
+                 }
+             })
+             .catch(()=> {
+                 alert('invalid');
+             })
+     } 
 
 
+    useEffect(()=>{
+        axios.get("http://localhost:180/profile/details")
+        .then(result=>{
+            console.log(result.data)
+            setViewdata(result.data);
+        })
+        .catch(e=>{
+            console.log("something went wrong")
+        })
+     }, [viewdata])
 
      
     return (
         <>
             <div className="d-flex" id="wrapper">
-                {/* Sidebar */}
+                
                 <div className="bg-white" id="sidebar-wrapper">
                     <div className="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom">   <img src= {sahayogi} alt="#" height={200}/>SAHAYOGI HAATH</div>
                     <div className="list-group list-group-flush my-3">
@@ -33,14 +66,12 @@ export const ViewUser = () => {
                         <div className="list-group-item list-group-item-action bg-transparent second-text fw-bold  ">
                         <p> Interface</p>
                         <Link to="/" className="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i className="fas fa-gift me-2" />View Profile</Link>
-                        <Link to='/invoice' className="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i className="fas fa-comment-dots me-2" /> View Registered User</Link>
+                        <Link to='/viewuser' className="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i className="fas fa-comment-dots me-2" /> View Registered User</Link>
                         <Link to="/booking" className="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i className="fas fa-map-marker-alt me-2" />View Worker</Link>
                         <Link to="/addworker" className="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i className="fas fa-map-marker-alt me-2" />Add Worker</Link>
-                        <Link to="/viewbooking" className="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i className="fas fa-map-marker-alt me-2" />View Booking</Link>
                     </div>
                 </div>
-                {/* /#sidebar-wrapper */}
-                {/* Page Content */}
+                
                 <div id="page-content-wrapper">
                     <nav className="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                         <div className="d-flex align-items-center">
@@ -108,34 +139,41 @@ export const ViewUser = () => {
                             </div>
                         </div>
                         <div className="row my-5">
-                            <h3 className="fs-4 mb-3">Recent Registred User</h3>
+                            <h3 className="fs-4 mb-3">Recent Registred Profile</h3>
                             <div className="container mx-auto">
                                 <table className="table bg-white rounded shadow-sm  table-hover">
                                     <thead style={{ fontSize: ".9em" }}>
                                         <tr>
-                                            <th scope="col">Username</th>
+                                            <th scope="col" className=''>Full Name</th>
                                             <th scope="col">Address</th>
-                                            <th scope="col">Contact Number</th>
-                                            <th scope="col">Email</th>
-                                            <th scope="col">Action</th>
-                                            {/* <th scope="col">problemdescription</th> */}
+                                            <th scope="col">Date of Birth</th>
+                                            <th scope="col">Photo</th>
+                                            <th scope="col">Verification</th>
+                                           
                                         </tr>
                                     </thead>
                                     <tbody>
+             
+
+               
                                     <tr/>
             {viewdata.map(singleData=>{
             console.log(singleData);
             return (
         <tr>
-          <td>{singleData.username}</td>
+          <td>{singleData.fullname}</td>
           <td>{singleData.address}</td>
-          <td>{singleData.phone}</td>
-          <td>{singleData.email}</td>
-
+          <td>{singleData.dateofbirth}</td>
+          <td><img src={'http://localhost:180/'+singleData.photo} className="img-fluid"/></td>
           <div className='d-flex'>
-           
+           <div><Link to=''><i class="fa fa fa-times text-danger fs-4 "></i></Link></div>
 
-           </div>
+           <div className='ml-5'><Link to='#'
+          onClick={() => {
+                                            ApproveProfile(singleData._id)
+                                        }}
+          
+          ><i class="fa fa-check text-success fs-4"></i></Link></div></div>
         </tr>
             )
         })}
@@ -146,7 +184,7 @@ export const ViewUser = () => {
                     </div>
                 </div>
             </div>
-            {/* /#page-content-wrapper */}
+         
             <div className="modal fade" id="exampleModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
@@ -161,4 +199,4 @@ export const ViewUser = () => {
         </>
     )
 }
-export default ViewUser;
+export default Adminprofile;

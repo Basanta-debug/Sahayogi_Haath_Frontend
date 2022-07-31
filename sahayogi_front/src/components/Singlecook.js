@@ -67,7 +67,7 @@ export default function SingleCook() {
     axios
       .get("http://localhost:180/cook/single/" + id, config)
       .then((result) => {
-       
+
         setSingledata(result.data);
         console.log('hi')
       });
@@ -226,10 +226,7 @@ export default function SingleCook() {
 
                   <div>    
                  <h5 className="pl-1 pt-4">{singledata.user.firstname} {singledata.user.lastname}  <div className="float-right flag">
-     
 
-          <label>
-           
 
             
             {
@@ -267,7 +264,7 @@ export default function SingleCook() {
            
           </label>
         
-   
+
                  
                  <BsFlag className="ml-4"></BsFlag> </div></h5>
                  

@@ -4,8 +4,7 @@ import { useEffect, useState } from "react";
 import "../dashboard.css";
 import { Link } from "react-router-dom";
 import sahayogi from "../../images/logo.jpg";
-import { TiTickOutline } from "react-icons/ti";
-import { ImCross } from "react-icons/im";
+
 export const Addcook = () => {
   const logout = () => {
     localStorage.clear();
@@ -28,6 +27,7 @@ export const Addcook = () => {
   const [photo, setimage] = useState("");
   const [experience, setexperience] = useState("");
   const [workinglocation, setworkinglocation] = useState("");
+
 
   const ApproveBooking = (id) => {
     const data = { id: id };
@@ -71,6 +71,7 @@ console.log(adata);
       .catch();
   };
 
+
   useEffect(() => {
     axios
       .get("http://localhost:180/cook/details")
@@ -87,7 +88,6 @@ console.log(adata);
   return (
     <>
       <div className="d-flex" id="wrapper">
-        {/* Sidebar */}
         <div className="bg-white" id="sidebar-wrapper">
           <div className="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom">
             {" "}
@@ -338,7 +338,7 @@ console.log(adata);
                       
                       
                     </div>
-                    <Link to={"/updatecook/" + singleData._id} ><button type="button" class="btn btn-warning ml-5 mt-2">Update</button></Link>
+
                   </div>
                 );
               })}
@@ -346,7 +346,7 @@ console.log(adata);
           </div>
         </div>
       </div>
-      {/* /#page-content-wrapper */}
+
     </>
   );
 };
